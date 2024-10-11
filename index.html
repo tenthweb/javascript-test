@@ -1,43 +1,141 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox with Disabled State Effect</title>
+  <style>
+    /* Styling the checkbox */
+ /* Customize the label (the container) */
+ .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+} 
+
+
+
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    /* Disabled state styling */
+    input[type="checkbox"].fake-disabled {
+      color: rgb(231, 14, 14);
+    }
+
+    /* Yellow effect for click when "disabled" */
+    input[type="checkbox"].disabled-click-effect {
+      color: yellow;
+    }
+  </style>
 </head>
-<body></body>
-    <h1 class="heading">
-    </h1>
-    <main>
+<body>
 
-        <!--
-            <input type="radio" name="test" id ="cool" onclick="updateVariable(this)">Cool
-        </input>
-        <input type="radio" name = "test" id ="radical" onclick="updateVariable(this)">Radical
-        </input>
-        <input type="radio" name = "test" id ="awesome" onclick="updateVariable(this)">Awesome
-        </input>
-    -->
-    
-    Wolf
-    <input type="range" min="1" max="2" value="0" class="slider" id="wolf-slider">
-    <br>
-    Goat
-    <input type="range" min="1" max="2" value="0" class="slider" id="goat-slider">
-    <br>
-    Cabbage
-    <input type="range" min="1" max="2" value="0" class="slider" id="cabbage-slider">
-    
-    <p id="demo"></p>
-
-    </main>
+  <label class = "container">Check me
+  <input type="checkbox" class = "checkmark" id="myCheckbox" checked="checked">
 
 
-    <script src="assets/js/script.js"></script>
-</body>
+  <span class="checkmark"></span>
+</label>
+  <button id="disableButton">Disable</button>
+  <button id="enableButton">Enable</button>
 
+  <script>
+    const checkbox = document.getElementById('myCheckbox');
+    const disableButton = document.getElementById('disableButton');
+    const enableButton = document.getElementById('enableButton');
+    let isFakeDisabled = false;
+
+    // Disable the checkbox when clicking the disable button
+    disableButton.addEventListener('click', () => {
+      isFakeDisabled = true;
+      checkbox.classList.add('fake-disabled');
+    });
+
+    // Enable the checkbox when clicking the enable button
+    enableButton.addEventListener('click', () => {
+      isFakeDisabled = false;
+      checkbox.classList.remove('fake-disabled');
+    });
+
+    // Handle click events and simulate disabled behavior
+    checkbox.addEventListener('click', (event) => {
+      if (isFakeDisabled) {
+        // Prevent the checkbox from actually changing its checked state
+        event.preventDefault();
+
+        // Apply the yellow effect briefly
+        checkbox.classList.add('disabled-click-effect');
+
+        // Remove the effect after a short delay (500ms)
+        setTimeout(() => {
+          checkbox.classList.remove('disabled-click-effect');
+        }, 500);
+      }
+    });
+  </script>
