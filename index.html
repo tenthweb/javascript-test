@@ -7,6 +7,7 @@
   <style>
     /* Styling the checkbox */
  /* Customize the label (the container) */
+
  .container {
   display: block;
   position: relative;
@@ -72,26 +73,19 @@
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-} 
-
-
-
-
-    input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-    }
+}
 
     /* Disabled state styling */
-    input[type="checkbox"].fake-disabled {
-      color: rgb(231, 14, 14);
+    .container input.fake-disabled ~ .checkmark  {
+      background-color: rgb(231, 14, 14);
     }
 
     /* Yellow effect for click when "disabled" */
-    input[type="checkbox"].disabled-click-effect {
+    .checkmark .disabled-click-effect {
       color: yellow;
     }
+
+
   </style>
 </head>
 <body>
