@@ -81,8 +81,9 @@
     }
 
     /* Yellow effect for click when "disabled" */
-    .checkmark .disabled-click-effect {
-      color: yellow;
+    .container input.disabled-click-effect ~ .checkmark  {
+      background-color:yellow;
+
     }
 
 
@@ -129,7 +130,7 @@
         // Remove the effect after a short delay (500ms)
         setTimeout(() => {
           checkbox.classList.remove('disabled-click-effect');
-        }, 500);
+        }, 100);
       }
     });
   </script>
