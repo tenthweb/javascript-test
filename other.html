@@ -5,27 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .a, .b {
+        .field {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #river {
+            width:auto;
+
+            flex-direction:column;
+
+
+        }
+
+        .tile {
+
+            position:relative;
+            padding:10px;
             border: 1px solid red;
-            width:100px;
+            margin: 20px;
+            max-width:200px;
+            width:auto;
             
         }
+
+
         
     </style>
 </head>
 <body>
     <div class="container">
-        <div class = "a">
-            A
-        </div>
-        <div class = "b">
-            B
-        </div>
-        <div class = "a">
-            A
+        <div id ="top-bank" class="field">
+            <div id = "top-bank-1" class="tile">
+                <p></p>
+            </div>
+            <div id = "top-bank-2" class="tile">
+                Goat
+            </div>
+            <div id = "top-bank-3" class="tile">
+                Beans
+            </div>
+        </div id = "river" class="field">
+            
+        <div id = "river" class = field>
+            <div id = "top-boat-cargo" class="tile">
+                cargo
+            </div>
+            <div id = "top-boat" class="tile">
+                boat
+            </div>
+            <div id = "bottom-boat-cargo" class="tile">
+                cargo
+            </div>
+            <div id = "bottom-boat" class="tile">
+                boat
+            </div>
+
+
         </div>
 
+        <div id  ="bottom-bank" class="field">
+            <div id = "bottom-bank-1" class="tile">
+                Wolf
+            </div>
+            <div id = "bottom-bank-2" class="tile">
+                Goat
+            </div>
+            <div id = "bottom-bank-3" class="tile">
+                Beans
+            </div>
+        </div>
+
+
     </div>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/script2.js"></script>
 </body>
 </html>
