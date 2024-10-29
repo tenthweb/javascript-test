@@ -41,6 +41,10 @@ bottomBoatCargo = new Tile("bottom-boat-cargo", ["empty","goat", "wolf","beans"]
 
  if (element) {
  element.innerHTML = tile.occupiedBy;
+
+  if (tile.occupiedBy == "empty") {
+    element.style.visibility = "hidden"; 
+  }
  
  element.addEventListener("click", function() {
   if ([topBank1,topBank2,topBank3].includes(tile)){
@@ -175,7 +179,17 @@ bottomBoatCargo = new Tile("bottom-boat-cargo", ["empty","goat", "wolf","beans"]
 
 
   tiles.forEach(tile => {
-    document.getElementById(tile.name).innerText = tile.occupiedBy
+    document.getElementById(tile.name).innerText = tile.occupiedBy;
+    element = document.getElementById(tile.name);
+
+  if (tile.occupiedBy == "empty") {
+      element.style.visibility = "hidden"; 
+    }
+
+    else if (tile.occupiedBy != "empty") {
+      element.style.visibility = "visible"; 
+    }
+
 
 
 
