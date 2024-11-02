@@ -32,6 +32,19 @@
             
         }
 
+        .shaking {
+            animation: warning-shake 0.5s 2;
+        }
+
+        @keyframes warning-shake  {
+ 0% { transform: translateX(0) }
+ 25% { transform: translateX(2px) }
+ 50% { transform: translateX(-2px) }
+ 75% { transform: translateX(2px) }
+ 100% { transform: translateX(0) }
+ 
+}
+
 
         
     </style>
@@ -39,7 +52,7 @@
 <body>
     <div class="container">
         <div id ="top-bank" class="field">
-            <div id = "top-bank-1" class="tile">
+            <div id = "top-bank-1" class="tile shaking">
                 <p></p>
             </div>
             <div id = "top-bank-2" class="tile">
