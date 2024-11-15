@@ -12,6 +12,15 @@ class Tile {
 
 
 
+
+}
+
+function turnBlue(tile) {
+  
+
+
+
+  
 }
 
 let topBank1 = new Tile("top-bank-1", ["empty","wolf"], "wolf"), 
@@ -47,6 +56,20 @@ bottomBoatCargo = new Tile("bottom-boat-cargo", ["empty","goat", "wolf","beans"]
   }
  
  element.addEventListener("click", function() {
+  
+  tiles.forEach(tile => {
+    element = document.getElementById(tile.name);
+
+    /*
+
+  if(element.classList.includes("shaking")) {
+    element.classList.remove("shaking")
+  }
+  })
+*/
+
+
+  /* case where the tile is one of the top bank ones */
   if ([topBank1,topBank2,topBank3].includes(tile)){
   
     if (tile.occupiedBy != "empty") {
@@ -54,7 +77,9 @@ bottomBoatCargo = new Tile("bottom-boat-cargo", ["empty","goat", "wolf","beans"]
         if (topBoatCargo.occupiedBy == "empty" && topBoat.occupiedBy != "empty"){
           
           if (tile == topBank1){
+            
             topBoatCargo.occupiedBy = "wolf"
+
           }
 
           if (tile == topBank2){
@@ -108,7 +133,10 @@ bottomBoatCargo = new Tile("bottom-boat-cargo", ["empty","goat", "wolf","beans"]
       topBoatCargo.occupiedBy = "empty"
       topBoat.occupiedBy = "empty"
     }
-
+    else{
+      shakingelement = document.getElementById(topBoatCargo.name)
+      shakingelement.classList.add("shaking");
+    }
 
   }
 
@@ -189,6 +217,9 @@ bottomBoatCargo = new Tile("bottom-boat-cargo", ["empty","goat", "wolf","beans"]
     else if (tile.occupiedBy != "empty") {
       element.style.visibility = "visible"; 
     }
+
+ 
+  
 
 
 
