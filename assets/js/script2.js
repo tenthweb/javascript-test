@@ -11,8 +11,6 @@ class Tile {
   }
 
 
-
-
 }
 
 function turnBlue(tile) {
@@ -61,7 +59,7 @@ tiles.forEach(tile => {
           element = document.getElementById(tile.name);
           
 
-
+          /*on each click, switch off the shaking effect on all tiles*/
 
           if (element.classList.contains("shaking")) {
             element.classList.remove("shaking")
@@ -71,6 +69,7 @@ tiles.forEach(tile => {
 
         })
 
+        /* main logic for tile movement */
 
         /* case where the tile is one of the top bank ones */
         if ([topBank1, topBank2, topBank3].includes(tile)) {
@@ -132,12 +131,20 @@ tiles.forEach(tile => {
             !(topBank2.occupiedBy == "goat" && topBank3.occupiedBy == "beans")
 
           ) {
+
+            /*move boat*/
             bottomBoat.occupiedBy = "boat";
             bottomBoatCargo.occupiedBy = topBoatCargo.occupiedBy;
+
             topBoatCargo.occupiedBy = "empty"
             topBoat.occupiedBy = "empty"
-          } else {
+          
+          } 
+          
+          else {
             shakingelement = document.getElementById(topBoatCargo.name)
+            shakingelement.classList.add("shaking");
+            shakingelement = document.getElementById(topBoat.name)
             shakingelement.classList.add("shaking");
           }
 
@@ -147,10 +154,21 @@ tiles.forEach(tile => {
           if (tile.occupiedBy == "boat" &&
             !(bottomBank1.occupiedBy == "wolf" && bottomBank2.occupiedBy == "goat") &&
             !(bottomBank2.occupiedBy == "goat" && bottomBank3.occupiedBy == "beans")) {
+            
             topBoat.occupiedBy = "boat";
             topBoatCargo.occupiedBy = bottomBoatCargo.occupiedBy;
+
             bottomBoatCargo.occupiedBy = "empty"
             bottomBoat.occupiedBy = "empty"
+          
+          
+          }
+
+          else {
+            shakingelement = document.getElementById(bottomBoatCargo.name)
+            shakingelement.classList.add("shaking");
+            shakingelement = document.getElementById(bottomBoat.name)
+            shakingelement.classList.add("shaking");
           }
 
 
