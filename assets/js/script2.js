@@ -23,21 +23,21 @@ function turnBlue(tile) {
 
 let topBank1 = new Tile("top-bank-1", ["empty", "wolf"], "wolf"),
   topBank2 = new Tile("top-bank-2", ["empty", "goat"], "goat"),
-  topBank3 = new Tile("top-bank-3", ["empty", "beans"], "beans"),
+  topBank3 = new Tile("top-bank-3", ["empty", "cabbages"], "cabbages"),
 
-  topBoatCargo = new Tile("top-boat-cargo", ["empty", "goat", "wolf", "beans"], "empty"),
+  topBoatCargo = new Tile("top-boat-cargo", ["empty", "goat", "wolf", "cabbages"], "empty"),
 
   topBoat = new Tile("top-boat", ["empty", "boat"], "boat"),
 
   bottomBoat = new Tile("bottom-boat", ["empty", "boat"], "empty"),
 
 
-  bottomBoatCargo = new Tile("bottom-boat-cargo", ["empty", "goat", "wolf", "beans"], "empty"),
+  bottomBoatCargo = new Tile("bottom-boat-cargo", ["empty", "goat", "wolf", "cabbages"], "empty"),
 
   bottomBank1 = new Tile("bottom-bank-1", ["empty", "wolf"], "empty"),
 
   bottomBank2 = new Tile("bottom-bank-2", ["empty", "goat"], "empty"),
-  bottomBank3 = new Tile("bottom-bank-3", ["empty", "beans"], "empty")
+  bottomBank3 = new Tile("bottom-bank-3", ["empty", "cabbages"], "empty")
 
 tiles = [topBank1, topBank2, topBank3, topBoatCargo, topBoat, bottomBoat, bottomBoatCargo, bottomBank1, bottomBank2, bottomBank3]
 
@@ -67,6 +67,8 @@ tiles.forEach(tile => {
 
           }
 
+          document.getElementById("messages").innerText = ""
+
         })
 
         /* main logic for tile movement */
@@ -89,7 +91,7 @@ tiles.forEach(tile => {
               }
 
               if (tile == topBank3) {
-                topBoatCargo.occupiedBy = "beans"
+                topBoatCargo.occupiedBy = "cabbages"
               }
 
               tile.occupiedBy = "empty"
@@ -112,8 +114,8 @@ tiles.forEach(tile => {
 
 
           }
-          if (topBoatCargo.occupiedBy == "beans") {
-            topBank3.occupiedBy = "beans"
+          if (topBoatCargo.occupiedBy == "cabbages") {
+            topBank3.occupiedBy = "cabbages"
 
 
           }
@@ -128,7 +130,7 @@ tiles.forEach(tile => {
 
             &&
             !(topBank1.occupiedBy == "wolf" && topBank2.occupiedBy == "goat") &&
-            !(topBank2.occupiedBy == "goat" && topBank3.occupiedBy == "beans")
+            !(topBank2.occupiedBy == "goat" && topBank3.occupiedBy == "cabbages")
 
           ) {
 
@@ -146,14 +148,27 @@ tiles.forEach(tile => {
             shakingelement.classList.add("shaking");
             shakingelement = document.getElementById(topBoat.name)
             shakingelement.classList.add("shaking");
+
+            document.getElementById("messages").innerText = "Sorry! you cannot move the "+topBoatCargo.occupiedBy+" right now"
           }
 
         }
 
         if (tile == bottomBoat) {
-          if (tile.occupiedBy == "boat" &&
+          if (tile.occupiedBy == "boat" && (
+            
+            /*we cannot leave these pairs alone on the south bank:
+              * wolf and goat
+              * goat and cabbages
+            */ 
+            
             !(bottomBank1.occupiedBy == "wolf" && bottomBank2.occupiedBy == "goat") &&
-            !(bottomBank2.occupiedBy == "goat" && bottomBank3.occupiedBy == "beans")) {
+            !(bottomBank2.occupiedBy == "goat" && bottomBank3.occupiedBy == "cabbages")
+            ))
+          
+          
+          
+          {
             
             topBoat.occupiedBy = "boat";
             topBoatCargo.occupiedBy = bottomBoatCargo.occupiedBy;
@@ -169,6 +184,11 @@ tiles.forEach(tile => {
             shakingelement.classList.add("shaking");
             shakingelement = document.getElementById(bottomBoat.name)
             shakingelement.classList.add("shaking");
+
+            document.getElementById("messages").innerText = "Sorry! you cannot move the "+topBoatCargo.occupiedBy+" right now"
+
+          
+            
           }
 
 
@@ -186,8 +206,8 @@ tiles.forEach(tile => {
 
 
           }
-          if (bottomBoatCargo.occupiedBy == "beans") {
-            bottomBank3.occupiedBy = "beans"
+          if (bottomBoatCargo.occupiedBy == "cabbages") {
+            bottomBank3.occupiedBy = "cabbages"
 
 
           }
@@ -213,7 +233,7 @@ tiles.forEach(tile => {
               }
 
               if (tile == bottomBank3) {
-                bottomBoatCargo.occupiedBy = "beans"
+                bottomBoatCargo.occupiedBy = "cabbages"
               }
 
               tile.occupiedBy = "empty"
@@ -244,7 +264,19 @@ tiles.forEach(tile => {
 
 
           });
-      })
+          
+
+          /* win condition */
+        
+        if (bottomBank1.occupiedBy == "wolf" &&
+          bottomBank2.occupiedBy == "goat" &&
+          bottomBank3.occupiedBy == "cabbages"
+        ){
+          document.getElementById("messages").innerText = "You Win!";
+
+        }
+
+        })
     
   }
 })
