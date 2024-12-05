@@ -57,7 +57,7 @@ tiles.forEach(tile => {
 
         tiles.forEach(tile => {
           element = document.getElementById(tile.name);
-          
+          console.log(element)
 
           /*on each click, switch off the shaking effect on all tiles*/
 
