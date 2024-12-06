@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .container {
+        body {
             width: 400px;
+
         }
+
+        .container {
+            margin-top:20px;
+            width: 400px;
+            background-color: #77e069;
+        }
+
         .field {
-            width:400px;
+            width: 400px;
+
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -17,36 +27,47 @@
 
         #river {
 
-            display:block;
+            display: block;
+            background-color: #53a7e8;
+            height: 400px;
 
-
-
+            display: grid;
+            grid-template-rows: repeat(4, 1fc);
+            justify-content: center;
+            align-items: center;
 
         }
 
+
+
+
+
+
         .tile {
 
-            padding:10px;
-            border: 1px solid red;
+            border: 3px solid rgb(0, 83, 0);
+            border-radius: 6px;
             margin: 20px;
-            width:60px;
-            
+            width: 70px;
+            height: 70px;
+
+
+
         }
 
 
         .boat {
             position: block;
-            width:160px;
-            height:80px;
-            margin-top:0;
+            margin-top: 0;
+            margin-bottom: 20px;
         }
 
         .cargo {
-            position:block;
-            margin-bottom:0;
+            position: block;
+            margin-bottom: 0;
         }
 
- 
+
 
 
 
@@ -54,51 +75,79 @@
             animation: warning-shake 0.5s 2;
         }
 
-        @keyframes warning-shake  {
- 0% { transform: translateX(0) }
- 25% { transform: translateX(2px) }
- 50% { transform: translateX(-2px) }
- 75% { transform: translateX(2px) }
- 100% { transform: translateX(0) }
- 
-}
+        @keyframes warning-shake {
+            0% {
+                transform: translateX(0)
+            }
 
+            25% {
+                transform: translateX(3px)
+            }
 
-        
+            50% {
+                transform: translateX(-3px)
+            }
+
+            75% {
+                transform: translateX(3px)
+            }
+
+            100% {
+                transform: translateX(0)
+            }
+
+        }
     </style>
 </head>
+
 <body>
-    <div>
-        A man had to take a wolf, a goat and a bunch of cabbages across a river. The only boat he could find could only take two of them at a time. But he had been ordered to transfer all of these to the other side in good condition. How could this be done.
-    </div>
+    
+    <section id= "puzzle-outline">
+        <h2>The Puzzle</h2>
+        A man had to take a wolf, a goat and a bunch of cabbages across a river. The only boat he could find could only
+        take two of them at a time. But he had been ordered to transfer all of these to the other side in good
+        condition. How could this be done.
+    </section>
+
+
+    <section id ="instructions">
+        <h2>
+            Instructions
+        </h2>
+
+    Click the tiles to move cargo onto to the boat, move the boat across the river, and unload the cargo across the riverbank.
+
+</section>
+</div>
     <div class="container">
-        <div id ="top-bank" class="field">
-            <div id = "top-bank-1" class="tile">
+        <div id="top-bank" class="field">
+            <div id="top-bank-1" class="tile">
                 <p></p>
             </div>
-            <div id = "top-bank-2" class="tile">
-                Goat
+            <div id="top-bank-2" class="tile">
+
+
             </div>
-            <div id = "top-bank-3" class="tile">
+            <div id="top-bank-3" class="tile">
                 Cabbages
             </div>
-        </div id = "river" class="field">
-            
-        <div id = "river" class = field>
+        </div id="river" class="field">
 
-            <div id = "top-boat-cargo" class="tile cargo">
+        <div id="river" class=field>
+
+            <div id="top-boat-cargo" class="tile cargo">
                 cargo
             </div>
 
-            <div id = "top-boat" class="tile boat">
+            <div id="top-boat" class="tile boat">
                 boat
 
             </div>
 
-            <div id = "bottom-boat-cargo" class="tile cargo">
+            <div id="bottom-boat-cargo" class="tile cargo">
                 cargo
             </div>
-            <div id = "bottom-boat" class="tile boat">
+            <div id="bottom-boat" class="tile boat">
                 boat
 
 
@@ -107,14 +156,14 @@
 
         </div>
 
-        <div id  ="bottom-bank" class="field">
-            <div id = "bottom-bank-1" class="tile">
+        <div id="bottom-bank" class="field">
+            <div id="bottom-bank-1" class="tile">
                 Wolf
             </div>
-            <div id = "bottom-bank-2" class="tile">
+            <div id="bottom-bank-2" class="tile">
                 Goat
             </div>
-            <div id = "bottom-bank-3" class="tile">
+            <div id="bottom-bank-3" class="tile">
                 Cabbages
             </div>
         </div>
@@ -127,4 +176,5 @@
     </div>
     <script src="assets/js/script2.js"></script>
 </body>
+
 </html>

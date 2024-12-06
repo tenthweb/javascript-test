@@ -45,9 +45,9 @@ tiles = [topBank1, topBank2, topBank3, topBoatCargo, topBoat, bottomBoat, bottom
 
 tiles.forEach(tile => {
   element = document.getElementById(tile.name);
-
   if (element) {
-    element.innerHTML = tile.occupiedBy;
+    element.innerHTML = `<img src="assets/images/${tile.occupiedBy}.png" alt="${tile.occupiedBy}" style="width: 100%; height: 100%;">`;
+;
 
     if (tile.occupiedBy == "empty") {
       element.style.visibility = "hidden";
@@ -57,7 +57,6 @@ tiles.forEach(tile => {
 
         tiles.forEach(tile => {
           element = document.getElementById(tile.name);
-          console.log(element)
 
           /*on each click, switch off the shaking effect on all tiles*/
 
@@ -185,6 +184,8 @@ tiles.forEach(tile => {
             shakingelement = document.getElementById(bottomBoat.name)
             shakingelement.classList.add("shaking");
 
+             
+
             document.getElementById("messages").innerText = "Sorry! you cannot move the "+topBoatCargo.occupiedBy+" right now"
 
           
@@ -248,7 +249,8 @@ tiles.forEach(tile => {
 
 
         tiles.forEach(tile => {
-            document.getElementById(tile.name).innerText = tile.occupiedBy;
+            document.getElementById(tile.name).innerHTML = `<img src="assets/images/${tile.occupiedBy}.png" alt="${tile.occupiedBy}" style="width: 100%; height: 100%;">`;
+            ;
             element = document.getElementById(tile.name);
 
             if (tile.occupiedBy == "empty") {
