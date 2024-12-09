@@ -1,180 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Puzzle By Alcuin</title>
     <style>
-        body {
-            width: 400px;
+      body {
+        width: 400px;
+      }
 
+
+
+
+      .container {
+        position:relative;
+        margin-top: 20px;
+        width: 100%;
+        height:100%;
+        max-width:400px;
+        background-color: #77e069;
+      }
+
+
+      
+
+
+      .field {
+        width: 400px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      #river {
+        display: block;
+        background-color: #53a7e8;
+        height: 400px;
+
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .tile {
+        border: 3px solid rgb(0, 83, 0);
+        border-radius: 6px;
+        margin: 20px;
+        width: 70px;
+        height: 70px;
+      }
+
+      .boat {
+        display: block;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      .cargo {
+        display: block;
+        margin-bottom: 0;
+      }
+
+      .shaking {
+        animation: warning-shake 0.5s 2;
+      }
+
+      @keyframes warning-shake {
+        0% {
+          transform: translateX(0);
         }
 
-        .container {
-            margin-top:20px;
-            width: 400px;
-            background-color: #77e069;
+        25% {
+          transform: translateX(3px);
         }
 
-        .field {
-            width: 400px;
-
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+        50% {
+          transform: translateX(-3px);
         }
 
-        #river {
-
-            display: block;
-            background-color: #53a7e8;
-            height: 400px;
-
-            display: grid;
-            grid-template-rows: repeat(4, 1fc);
-            justify-content: center;
-            align-items: center;
-
+        75% {
+          transform: translateX(3px);
         }
 
-
-
-
-
-
-        .tile {
-
-            border: 3px solid rgb(0, 83, 0);
-            border-radius: 6px;
-            margin: 20px;
-            width: 70px;
-            height: 70px;
-
-
-
+        100% {
+          transform: translateX(0);
         }
+      }
 
+      .start-screen {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:absolute;
+        width: 100%;
+        height:100%;
+        max-width:400px;
+        background-color: #77e069;
 
-        .boat {
-            position: block;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
+      }
 
-        .cargo {
-            position: block;
-            margin-bottom: 0;
-        }
-
-
-
-
-
-        .shaking {
-            animation: warning-shake 0.5s 2;
-        }
-
-        @keyframes warning-shake {
-            0% {
-                transform: translateX(0)
-            }
-
-            25% {
-                transform: translateX(3px)
-            }
-
-            50% {
-                transform: translateX(-3px)
-            }
-
-            75% {
-                transform: translateX(3px)
-            }
-
-            100% {
-                transform: translateX(0)
-            }
-
-        }
+      .start-screen button {
+        margin-top:10px;
+        
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    
-    <section id= "puzzle-outline">
-        <h2>The Puzzle</h2>
-        A man had to take a wolf, a goat and a bunch of cabbages across a river. The only boat he could find could only
-        take two of them at a time. But he had been ordered to transfer all of these to the other side in good
+  <body>
+    <section id="puzzle-outline">
+      <h2>The Puzzle</h2>
+      <p>
+        A man had to take a wolf, a goat and a bunch of cabbages across a river.
+        The only boat he could find could only take two of them at a time. But
+        he had been ordered to transfer all of these to the other side in good
         condition. How could this be done.
+      </p>
+    </section>
+
+    <section id="instructions">
+      <h2>Instructions</h2>
+
+      <p>
+        Click the tiles to move cargo onto to the boat, move the boat across the
+        river, and unload the cargo across the riverbank.
+      </p>
     </section>
 
 
-    <section id ="instructions">
-        <h2>
-            Instructions
-        </h2>
-
-    Click the tiles to move cargo onto to the boat, move the boat across the river, and unload the cargo across the riverbank.
-
-</section>
-</div>
     <div class="container">
-        <div id="top-bank" class="field">
-            <div id="top-bank-1" class="tile">
-                <p></p>
-            </div>
-            <div id="top-bank-2" class="tile">
+
+      <div class="start-screen">
+        <button>Start Game</button>
+
+      </div>
+
+      <div class="main-screen">
 
 
-            </div>
-            <div id="top-bank-3" class="tile">
-                Cabbages
-            </div>
-        </div id="river" class="field">
+      <div id="top-bank" class="field">
+        <div id="top-bank-1" class="tile"></div>
+        <div id="top-bank-2" class="tile"></div>
+        <div id="top-bank-3" class="tile"></div>
+      </div>
 
-        <div id="river" class=field>
+      <div id="river" class="field">
+        <div id="top-boat-cargo" class="tile cargo"></div>
 
-            <div id="top-boat-cargo" class="tile cargo">
-                cargo
-            </div>
+        <div id="top-boat" class="tile boat"></div>
 
-            <div id="top-boat" class="tile boat">
-                boat
+        <div id="bottom-boat-cargo" class="tile cargo"></div>
+        <div id="bottom-boat" class="tile boat"></div>
+      </div>
 
-            </div>
-
-            <div id="bottom-boat-cargo" class="tile cargo">
-                cargo
-            </div>
-            <div id="bottom-boat" class="tile boat">
-                boat
-
-
-            </div>
-
-
-        </div>
-
-        <div id="bottom-bank" class="field">
-            <div id="bottom-bank-1" class="tile">
-                Wolf
-            </div>
-            <div id="bottom-bank-2" class="tile">
-                Goat
-            </div>
-            <div id="bottom-bank-3" class="tile">
-                Cabbages
-            </div>
-        </div>
-
-
+      <div id="bottom-bank" class="field">
+        <div id="bottom-bank-1" class="tile"></div>
+        <div id="bottom-bank-2" class="tile"></div>
+        <div id="bottom-bank-3" class="tile"></div>
+      </div>
     </div>
 
-    <div id="messages">
+    <div id="messages"></div>
 
-    </div>
+  </div>
+
     <script src="assets/js/script2.js"></script>
-</body>
-
+  </body>
 </html>
