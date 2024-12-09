@@ -6,6 +6,12 @@ class Tile {
   }
 }
 
+
+function hideStartScreen(){
+  element = document.getElementById("start-screen");
+  element.style.visibility = "hidden"
+}
+
 // function turnBlue(tile) {}
 
 let topBank1 = new Tile("top-bank-1", ["empty", "wolf"], "wolf"),
@@ -127,13 +133,12 @@ tiles.forEach((tile) => {
       }
 
       if (tile == bottomBoat) {
+        //we cannot leave these pairs alone on the south bank:
+        // wolf and goat
+        // goat and cabbages
+        //
         if (
           tile.occupiedBy == "boat" &&
-          /*we cannot leave these pairs alone on the south bank:
-           * wolf and goat
-           * goat and cabbages
-           */
-
           !(
             bottomBank1.occupiedBy == "wolf" && bottomBank2.occupiedBy == "goat"
           ) &&

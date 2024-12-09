@@ -89,7 +89,7 @@
         }
       }
 
-      .start-screen {
+      #start-screen {
         display:flex;
         align-items:center;
         justify-content:center;
@@ -101,7 +101,7 @@
 
       }
 
-      .start-screen button {
+      #start-screen button {
         margin-top:10px;
         
       }
@@ -131,8 +131,9 @@
 
     <div class="container">
 
-      <div class="start-screen">
-        <button>Start Game</button>
+      <div id="start-screen">
+        <!--got this from w3schools-->
+        <button onclick="hideStartScreen()">Start Game</button>
 
       </div>
 
