@@ -1,37 +1,51 @@
 class Tile {
-  constructor(name, permittedOccupants = [], occupiedBy = "empty") {
+  constructor(name, permittedOccupants = [], occupiedBy = "empty", bankSide) {
     this.name = name;
     this.occupiedBy = occupiedBy;
     this.permittedOccupants = permittedOccupants;
+    this.bankSide = bankSide;
   }
 }
 
 
-function hideStartScreen(){
+function hideStartScreen() {
   element = document.getElementById("start-screen");
   element.style.visibility = "hidden"
 }
 
+function warnPlayer(tile){
+    if (tile.bankSide == "top"){
+          shakingelement = document.getElementById(topBoatCargo.name);
+          shakingelement = document.getElementById(topBoat.name);
+    }
+
+    else {
+      shakingelement = document.getElementById(bottomBoatCargo.name);
+      shakingelement.classList.add("shaking");
+      shakingelement = document.getElementById(bottomBoat.name);
+    }
+    shakingelement.classList.add("shaking");
+
+          document.getElementById("messages").innerText =
+            "Sorry! you cannot move the boat; the ";
+        
+      }
+
+
+
+
 // function turnBlue(tile) {}
 
-let topBank1 = new Tile("top-bank-1", ["empty", "wolf"], "wolf"),
-  topBank2 = new Tile("top-bank-2", ["empty", "goat"], "goat"),
-  topBank3 = new Tile("top-bank-3", ["empty", "cabbages"], "cabbages"),
-  topBoatCargo = new Tile(
-    "top-boat-cargo",
-    ["empty", "goat", "wolf", "cabbages"],
-    "empty"
-  ),
-  topBoat = new Tile("top-boat", ["empty", "boat"], "boat"),
-  bottomBoat = new Tile("bottom-boat", ["empty", "boat"], "empty"),
-  bottomBoatCargo = new Tile(
-    "bottom-boat-cargo",
-    ["empty", "goat", "wolf", "cabbages"],
-    "empty"
-  ),
-  bottomBank1 = new Tile("bottom-bank-1", ["empty", "wolf"], "empty"),
-  bottomBank2 = new Tile("bottom-bank-2", ["empty", "goat"], "empty"),
-  bottomBank3 = new Tile("bottom-bank-3", ["empty", "cabbages"], "empty");
+let topBank1        = new Tile("top-bank-1", ["empty", "wolf"], "wolf", "top")
+let topBank2        = new Tile("top-bank-2", ["empty", "goat"], "goat", "top")
+let topBank3        = new Tile("top-bank-3", ["empty", "cabbages"], "cabbages", "top")
+let topBoatCargo    = new Tile("top-boat-cargo", ["empty", "goat", "wolf", "cabbages"], "empty", "top")
+let topBoat         = new Tile("top-boat", ["empty", "boat"], "boat", "top")
+let bottomBoat      = new Tile("bottom-boat", ["empty", "boat"], "empty", "bottom")
+let bottomBoatCargo = new Tile("bottom-boat-cargo",  ["empty", "goat", "wolf", "cabbages"],  "empty", "bottom")
+let bottomBank1     = new Tile("bottom-bank-1", ["empty", "wolf"], "empty", "bottom");
+let bottomBank2     = new Tile("bottom-bank-2", ["empty", "goat"], "empty", "bottom");
+let bottomBank3     = new Tile("bottom-bank-3", ["empty", "cabbages"], "empty", "bottom");
 
 const tiles = [
   topBank1,
@@ -108,28 +122,25 @@ tiles.forEach((tile) => {
       }
 
       if (tile == topBoat) {
-        if (
-          tile.occupiedBy == "boat" &&
+        if (tile.occupiedBy == "boat" &&
           !(topBank1.occupiedBy == "wolf" && topBank2.occupiedBy == "goat") &&
           !(topBank2.occupiedBy == "goat" && topBank3.occupiedBy == "cabbages")
-        ) {
+        ) 
+        
+      {
           /*move boat*/
           bottomBoat.occupiedBy = "boat";
           bottomBoatCargo.occupiedBy = topBoatCargo.occupiedBy;
 
           topBoatCargo.occupiedBy = "empty";
           topBoat.occupiedBy = "empty";
-        } else {
-          shakingelement = document.getElementById(topBoatCargo.name);
-          shakingelement.classList.add("shaking");
-          shakingelement = document.getElementById(topBoat.name);
-          shakingelement.classList.add("shaking");
-
-          document.getElementById("messages").innerText =
-            "Sorry! you cannot move the " +
-            topBoatCargo.occupiedBy +
-            " right now";
-        }
+        
+        } 
+        
+        // behaviour when illegal move is made
+      else {
+            warnPlayer(tile)
+          }
       }
 
       if (tile == bottomBoat) {
@@ -152,16 +163,10 @@ tiles.forEach((tile) => {
 
           bottomBoatCargo.occupiedBy = "empty";
           bottomBoat.occupiedBy = "empty";
-        } else {
-          shakingelement = document.getElementById(bottomBoatCargo.name);
-          shakingelement.classList.add("shaking");
-          shakingelement = document.getElementById(bottomBoat.name);
-          shakingelement.classList.add("shaking");
-
-          document.getElementById("messages").innerText =
-            "Sorry! you cannot move the " +
-            topBoatCargo.occupiedBy +
-            " right now";
+        } 
+        
+        else {
+          warnPlayer(tile)
         }
       }
 
