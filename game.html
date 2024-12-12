@@ -33,7 +33,7 @@
     <div class="container">
 
       <div id="start-screen">
-        <!--got this from w3schools-->
+        <!--got the onclick syntax from w3schools-->
         <h2>The Wolf, Goat, and Cabbbage Problem</h2>
         <p>
         The wolf, goat and cabbage problem is a very old logic puzzle. The earliest known version was included in a book of puzzles by the medieval monk Alcuin of York. Care to test your wits? 
@@ -41,7 +41,6 @@
         <button onclick="hideStartScreen()">Start Game</button>
         <button onclick="displayRules()">Instructions</button>
         
-
       </div>
 
       <div class="main-screen">
@@ -68,12 +67,21 @@
         <div id="bottom-bank-3" class="tile"></div>
       </div>
 
-      <div id="messages"></div>
 
     </div>
+    <div id="messages"></div>
 
 
   </div>
+
+  <div id="win-screen">
+  <p>Congratulations! You win!</p>
+  <button>Play Again</button>
+  <button>Return to main screen</button>
+  
+  
+  </div>
+
 
     <script src="assets/js/script2.js"></script>
   </body>
