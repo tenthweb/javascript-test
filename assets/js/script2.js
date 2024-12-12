@@ -12,6 +12,11 @@ function showMessage() {
   element = document.getElementById("messages");
   element.style.visibility = "visible"
 }
+function hideMessage() {
+  element = document.getElementById("messages");
+  element.style.visibility = "hidden"
+}
+
 
 function hideStartScreen() {
   element = document.getElementById("start-screen");
@@ -41,7 +46,12 @@ function warnPlayer(tile) {
   }
   showMessage();
   document.getElementById("messages").innerText =
-    "Sorry! you cannot move the boat; the ";
+    "Sorry! you cannot move the boat right now!";
+
+    element = document.getElementById("messages");
+    element.addEventListener("click", function(){
+      hideMessage()
+});
 
 }
 
