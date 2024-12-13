@@ -39,6 +39,11 @@ function hideStartScreen() {
   element.style.visibility = "hidden"
 }
 
+function showStartScreen() {
+  element = document.getElementById("start-screen");
+  element.style.visibility = "visible"
+}
+
 function showWinScreen() {
   element = document.getElementById("win-screen");
   element.style.visibility = "visible"
@@ -52,9 +57,6 @@ function hideWinScreen() {
 function resetGame(){
   resetTiles();
   hideWinScreen();
-
-
-
 }
 
 function resetTiles() {
@@ -90,6 +92,13 @@ function resetTiles() {
 }
   
 })
+}
+
+function resetApp(){
+  resetGame();
+  hideWinScreen();
+  showStartScreen();
+
 }
 
 
