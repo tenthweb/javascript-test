@@ -23,11 +23,16 @@ function hideStartScreen() {
   element.style.visibility = "hidden"
 }
 
+function showWinScreen() {
+  element = document.getElementById("win-screen");
+  element.style.visibility = "visible"
+}
+
 function turnRed(tile) {
   turnRedElement = document.getElementById(tile.name);
 
-  turnRedElement.classList.add("turn-red");
-  turnRedElement.style.border="red"
+  
+  turnRedElement.style.bordercolor = "#ff0000"
 }
 
 function warnPlayer(tile) {
@@ -46,11 +51,12 @@ function warnPlayer(tile) {
   }
   showMessage();
   document.getElementById("messages").innerText =
-    "Sorry! you cannot move the boat right now!";
+    "Sorry! you cannot move the boat right now! Click to continue.";
 
     element = document.getElementById("messages");
     element.addEventListener("click", function(){
       hideMessage()
+      
 });
 
 }
@@ -250,7 +256,10 @@ tiles.forEach((tile) => {
         bottomBank2.occupiedBy == "goat" &&
         bottomBank3.occupiedBy == "cabbages"
       ) {
-        document.getElementById("messages").innerText = "You Win!";
+
+      /*  document.getElementById("messages").innerText = "You Win!"; */
+        showWinScreen()
+      
       }
     });
   }
