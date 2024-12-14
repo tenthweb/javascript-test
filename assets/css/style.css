@@ -149,12 +149,7 @@ border-radius: 5px;
   height: 100%;
   background-color: #daddbb;
   padding: 20px;
-
-
-
-
 }
-
 
 #messages {
   visibility: hidden;
@@ -188,7 +183,6 @@ border-radius: 5px;
   visibility: hidden;
   z-index: 1;
 }
-
 
 .grow-shrink {
 
