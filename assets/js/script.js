@@ -4,22 +4,19 @@ class Tile {
     this.bankSide = bankSide;
     this.occupiedBy = occupiedBy;
     this.permittedOccupants = permittedOccupants;
-    
   }
 }
-
 
 function displayRules() {
   element = document.getElementById("instructions");
 
   element.style.visibility = "visible";
-  element.addEventListener("click", function(){
+  element.addEventListener("click", function () {
     hideRules();
-
   });
 }
 
-function hideRules(){
+function hideRules() {
   element = document.getElementById("instructions");
 
   element.style.visibility = "hidden";
@@ -33,7 +30,6 @@ function hideMessage() {
   element = document.getElementById("messages");
   element.style.visibility = "hidden";
 }
-
 
 function hideStartScreen() {
   element = document.getElementById("start-screen");
@@ -55,89 +51,74 @@ function hideWinScreen() {
   element.style.visibility = "hidden";
 }
 
-function resetGame(){
+function resetGame() {
   resetTiles();
   hideWinScreen();
 }
 
-
-function freezeTiles(){
+function freezeTiles() {
   tiles.forEach((tile) => {
     document.getElementById(tile.name).style.pointerEvents = "none";
   });
-  
-
-
 }
 
-function unfreezeTiles(){
+function unfreezeTiles() {
   tiles.forEach((tile) => {
     document.getElementById(tile.name).style.pointerEvents = "auto";
   });
 }
 
 function resetTiles() {
-
   tiles.forEach((tile) => {
     if (tile.name == "top-bank-1") {
       tile.occupiedBy = "wolf";
-    }
-    else if (tile.name == "top-bank-2") {
+    } else if (tile.name == "top-bank-2") {
       tile.occupiedBy = "goat";
-    }
-    else if (tile.name == "top-bank-3") {
+    } else if (tile.name == "top-bank-3") {
       tile.occupiedBy = "cabbages";
+    } else if (tile.name == "top-boat") {
+      tile.occupiedBy = "boat";
+    } else {
+      tile.occupiedBy = "empty";
     }
-    else if (tile.name == "top-boat") {
-      tile.occupiedBy="boat";
-    }
-    else{
-      tile.occupiedBy="empty";
-    } 
-    
 
     element = document.getElementById(tile.name);
     if (element) {
-      
       if (tile.occupiedBy == "empty") {
         element.style.visibility = "hidden";
       }
-      else{
+      else {
         element.innerHTML = `<img src="assets/images/${tile.occupiedBy}.png" alt="${tile.occupiedBy}" style="width: 100%; height: 100%;">`;
         element.style.visibility = "visible";
       }
-}
-  
-});
+    }
+  });
 }
 
-function resetApp(){
+function resetApp() {
   resetGame();
   hideWinScreen();
   showStartScreen();
-
 }
-
 
 function flashRed(tile) {
   turnRedElement = document.getElementById(tile.name);
 
-  
   turnRedElement.style.borderColor = "#ff0000";
   setTimeout(() => {
-    turnRedElement.style.borderColor = "rgb(0, 83, 0)";}, 1000);
-
+    turnRedElement.style.borderColor = "rgb(0, 83, 0)";
+  }, 1000);
 }
 
 function growShrink(tile) {
-  growShrinkElement = document.getElementById(tile.name);  
-  growShrinkElement.classList.add("grow-shrink");
-  }
-
-function switchGrowShrinkOff(tile){
   growShrinkElement = document.getElementById(tile.name);
-  
-    growShrinkElement.classList.remove("grow-shrink");
+  growShrinkElement.classList.add("grow-shrink");
+}
+
+function switchGrowShrinkOff(tile) {
+  growShrinkElement = document.getElementById(tile.name);
+
+  growShrinkElement.classList.remove("grow-shrink");
 }
 
 function warnPlayer(tile) {
@@ -159,29 +140,47 @@ function warnPlayer(tile) {
   document.getElementById("messages").innerText =
     "If you move the boat right now, something will get eaten! (Click to continue)";
 
-    element = document.getElementById("messages");
-    element.addEventListener("click", function(){
-      hideMessage();
-      unfreezeTiles();
-      
-});
-
+  element = document.getElementById("messages");
+  element.addEventListener("click", function () {
+    hideMessage();
+    unfreezeTiles();
+  });
 }
-
-
-
-
 
 let topBank1 = new Tile("top-bank-1", "top", ["empty", "wolf"], "wolf");
 let topBank2 = new Tile("top-bank-2", "top", ["empty", "goat"], "goat");
 let topBank3 = new Tile("top-bank-3", "top", ["empty", "cabbages"], "cabbages");
-let topBoatCargo = new Tile("top-boat-cargo", "top" ["empty", "goat", "wolf", "cabbages"], "empty");
+let topBoatCargo = new Tile(
+  "top-boat-cargo",
+  "top"[("empty", "goat", "wolf", "cabbages")],
+  "empty"
+);
 let topBoat = new Tile("top-boat", "top", ["empty", "boat"], "boat");
-let bottomBoat = new Tile("bottom-boat",  "bottom", ["empty", "boat"], "empty");
-let bottomBoatCargo = new Tile("bottom-boat-cargo",  "bottom", ["empty", "goat", "wolf", "cabbages"], "empty");
-let bottomBank1 = new Tile("bottom-bank-1", "bottom", ["empty", "wolf"], "empty");
-let bottomBank2 = new Tile("bottom-bank-2", "bottom", ["empty", "goat"], "empty");
-let bottomBank3 = new Tile("bottom-bank-3", "bottom", ["empty", "cabbages"], "empty");
+let bottomBoat = new Tile("bottom-boat", "bottom", ["empty", "boat"], "empty");
+let bottomBoatCargo = new Tile(
+  "bottom-boat-cargo",
+  "bottom",
+  ["empty", "goat", "wolf", "cabbages"],
+  "empty"
+);
+let bottomBank1 = new Tile(
+  "bottom-bank-1",
+  "bottom",
+  ["empty", "wolf"],
+  "empty"
+);
+let bottomBank2 = new Tile(
+  "bottom-bank-2",
+  "bottom",
+  ["empty", "goat"],
+  "empty"
+);
+let bottomBank3 = new Tile(
+  "bottom-bank-3",
+  "bottom",
+  ["empty", "cabbages"],
+  "empty"
+);
 
 const tiles = [
   topBank1,
@@ -199,10 +198,14 @@ const tiles = [
 tiles.forEach((tile) => {
   element = document.getElementById(tile.name);
   if (element) {
+    if (tile.occupiedBy != "empty") {
     element.innerHTML = `<img src="assets/images/${tile.occupiedBy}.png" alt="${tile.occupiedBy}" style="width: 100%; height: 100%;">`;
-    if (tile.occupiedBy == "empty") {
+    }
+    else {
       element.style.visibility = "hidden";
     }
+
+  
 
     element.addEventListener("click", function () {
       tiles.forEach((tile) => {
@@ -258,19 +261,17 @@ tiles.forEach((tile) => {
       }
 
       if (tile == topBoat) {
-        if (tile.occupiedBy == "boat" &&
+        if (
+          tile.occupiedBy == "boat" &&
           !(topBank1.occupiedBy == "wolf" && topBank2.occupiedBy == "goat") &&
           !(topBank2.occupiedBy == "goat" && topBank3.occupiedBy == "cabbages")
-        )
-
-        {
+        ) {
           /*move boat*/
           bottomBoat.occupiedBy = "boat";
           bottomBoatCargo.occupiedBy = topBoatCargo.occupiedBy;
 
           topBoatCargo.occupiedBy = "empty";
           topBoat.occupiedBy = "empty";
-
         }
 
         // behaviour when illegal move is made
@@ -343,14 +344,15 @@ tiles.forEach((tile) => {
       }
 
       tiles.forEach((tile) => {
-        document.getElementById(
-          tile.name
-        ).innerHTML = `<img src="assets/images/${tile.occupiedBy}.png" alt="${tile.occupiedBy}" style="width: 100%; height: 100%;">`;
+        
         element = document.getElementById(tile.name);
 
         if (tile.occupiedBy == "empty") {
           element.style.visibility = "hidden";
         } else if (tile.occupiedBy != "empty") {
+          document.getElementById(
+            tile.name
+          ).innerHTML = `<img src="assets/images/${tile.occupiedBy}.png" alt="${tile.occupiedBy}" style="width: 100%; height: 100%;">`;
           element.style.visibility = "visible";
         }
       });
@@ -362,18 +364,16 @@ tiles.forEach((tile) => {
         bottomBank2.occupiedBy == "goat" &&
         bottomBank3.occupiedBy == "cabbages"
       ) {
-
         [bottomBank1, bottomBank2, bottomBank3].forEach((tile) => {
           growShrink(tile);
-          setTimeout(() => {switchGrowShrinkOff(tile)},2000);
+          setTimeout(() => {
+            switchGrowShrinkOff(tile);
+          }, 2000);
         });
 
-       
-
         setTimeout(() => {
-        showWinScreen() ;}, 2000);
-        
-      
+          showWinScreen();
+        }, 2000);
       }
     });
   }
