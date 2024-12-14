@@ -108,7 +108,8 @@ This results in the win screen displaying, so the test passed.
 
 ## Fixed Bugs
 
-Bug: If the game is played through and then replayed, the animation for the tiles when the game is won didn't work. This was fixed by separating out the functions that switched the animation on and off.
+* Bug: If the game is played through and then replayed, the animation for the tiles when the game is won didn't work. This was fixed by separating out the functions that switched the animation on and off.
+* Bug: errors were appearing in the console, where getElementById was looking for nonexistent png files. This was fixed by adding a conditional statement that made getElementById only look for non-empty tile spaces.
 
 # Deployment
 
