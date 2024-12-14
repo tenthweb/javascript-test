@@ -59,6 +59,22 @@ function resetGame(){
   hideWinScreen();
 }
 
+/* used https://stackoverflow.com/questions/18083061/make-element-unclickable-click-things-behind-it */
+function freezeTiles(){
+  tiles.forEach((tile) => {
+    document.getElementById(tile.name).style.pointerEvents = "none";
+  })
+  
+
+
+}
+
+function unfreezeTiles(){
+  tiles.forEach((tile) => {
+    document.getElementById(tile.name).style.pointerEvents = "auto";
+  })
+};
+
 function resetTiles() {
 
   tiles.forEach((tile) => {
@@ -134,6 +150,7 @@ function warnPlayer(tile) {
     shakingelement = document.getElementById(bottomBoat.name);
     shakingelement.classList.add("shaking");
   }
+  freezeTiles();
   showMessage();
   document.getElementById("messages").innerText =
     "If you move the boat right now, something will get eaten! (Click to continue)";
@@ -141,6 +158,7 @@ function warnPlayer(tile) {
     element = document.getElementById("messages");
     element.addEventListener("click", function(){
       hideMessage();
+      unfreezeTiles();
       
 });
 
