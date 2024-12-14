@@ -102,17 +102,20 @@ function resetApp(){
 }
 
 
-function turnRed(tile) {
+function flashRed(tile) {
   turnRedElement = document.getElementById(tile.name);
 
   
-  turnRedElement.style.bordercolor = "#ff0000"
+  turnRedElement.style.borderColor = "#ff0000"
+  setTimeout(() => {
+    turnRedElement.style.borderColor = "rgb(0, 83, 0)";}, 1000);
+
 }
 
 
 
 function warnPlayer(tile) {
-  turnRed(tile);
+  flashRed(tile);
 
   if (tile.bankSide == "top") {
     shakingelement = document.getElementById(topBoatCargo.name);
@@ -127,7 +130,7 @@ function warnPlayer(tile) {
   }
   showMessage();
   document.getElementById("messages").innerText =
-    "Sorry! you cannot move the boat right now! Click to continue.";
+    "Sorry! you cannot move the boat right now! (Click to continue)";
 
     element = document.getElementById("messages");
     element.addEventListener("click", function(){
