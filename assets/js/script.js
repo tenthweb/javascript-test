@@ -60,7 +60,7 @@ function resetGame(){
   hideWinScreen();
 }
 
-/* used https://stackoverflow.com/questions/18083061/make-element-unclickable-click-things-behind-it */
+
 function freezeTiles(){
   tiles.forEach((tile) => {
     document.getElementById(tile.name).style.pointerEvents = "none";

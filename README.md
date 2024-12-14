@@ -82,26 +82,38 @@ This results in the win screen displaying.
 
 2) Several invalid moves were tried to make sure the warning displayed correctly:
     1. On the top bank, if the wolf is put on the 
+
+
     
     
     :
-        
+
+3) Clicking each of the buttons and scre
+
+
+## Unfixed Bugs
+
+If the game is played through and then replayed, the animation for the tiles when the game is won doesn't work for two of the tiles. This doesn't affect the user's ability to play the game, but this is still a priority to fix in the future.
 
 
 # Deployment
-    The site was deployed to GitHub pages. The steps to deploy are as follows:
-        In the GitHub repository, navigate to the Settings tab
-        From the source section drop-down menu, select the Master Branch
-        Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+The site was deployed to GitHub pages. The steps to deploy are as follows:
+* In the GitHub repository, navigate to the Settings tab
+* From the source section drop-down menu, select the Master Branch
+* Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
 
-The live link can be found here - https://code-institute-org.github.io/
+The live link can be found at [https://tenthweb.github.io/wolf-goat-cabbages-puzzle/game.html](https://tenthweb.github.io/wolf-goat-cabbages-puzzle/game.html).
 
 # Credits
 
 ## Content
 
-
+*
+* The syntax for using onClick with buttons was adapted from [w3schools](https://www.w3schools.com/jsref/event_onclick.aspw3schools)
+* The shaking animation was based on [this page](https://unused-css.com/blog/css-shake-animation/)
 * The animation for the tiles when the win-conditions are met is adapted from [this site](https://animania.info/css/grow-shrink).
+* The favicon was generated [here](https://favicon.io/favicon-converter/)
+* The freezeTiles function was based on [this question on stackoverflow](https://stackoverflow.com/questions/18083061/make-element-unclickable-click-things-behind-it)
 
 ## Media
 
