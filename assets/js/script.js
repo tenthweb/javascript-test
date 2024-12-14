@@ -132,9 +132,12 @@ function flashRed(tile) {
 function growShrink(tile) {
   growShrinkElement = document.getElementById(tile.name);  
   growShrinkElement.classList.add("grow-shrink");
-  setTimeout(() => {
-    growShrinkElement.classList.remove("grow-shrink");},2000);
+  }
 
+function switchGrowShrinkOff(tile){
+  growShrinkElement = document.getElementById(tile.name);
+  
+    growShrinkElement.classList.remove("grow-shrink");
 }
 
 function warnPlayer(tile) {
@@ -362,6 +365,7 @@ tiles.forEach((tile) => {
 
         [bottomBank1, bottomBank2, bottomBank3].forEach((tile) => {
           growShrink(tile);
+          setTimeout(() => {switchGrowShrinkOff(tile)},2000);
         });
 
        
