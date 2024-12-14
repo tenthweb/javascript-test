@@ -112,7 +112,13 @@ function flashRed(tile) {
 
 }
 
+function growShrink(tile) {
+  growShrinkElement = document.getElementById(tile.name);  
+  growShrinkElement.classList.add("grow-shrink")
+  setTimeout(() => {
+    growShrinkElement.classList.remove("grow-shrink")},2000)
 
+}
 
 function warnPlayer(tile) {
   flashRed(tile);
@@ -130,7 +136,7 @@ function warnPlayer(tile) {
   }
   showMessage();
   document.getElementById("messages").innerText =
-    "Sorry! you cannot move the boat right now! (Click to continue)";
+    "If you move the boat right now, something will get eaten! (Click to continue)";
 
     element = document.getElementById("messages");
     element.addEventListener("click", function(){
@@ -335,8 +341,15 @@ tiles.forEach((tile) => {
         bottomBank3.occupiedBy == "cabbages"
       ) {
 
-      /*  document.getElementById("messages").innerText = "You Win!"; */
-        showWinScreen()
+        [bottomBank1, bottomBank2, bottomBank3].forEach(tile => {
+          growShrink(tile);
+      });
+
+       
+
+        setTimeout(() => {
+        showWinScreen() = "rgb(0, 83, 0)";}, 2000);
+        
       
       }
     });
