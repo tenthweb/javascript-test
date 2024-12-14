@@ -134,7 +134,7 @@ function warnPlayer(tile) {
 
     element = document.getElementById("messages");
     element.addEventListener("click", function(){
-      hideMessage()
+      hideMessage();
       
 });
 
