@@ -1,9 +1,10 @@
 class Tile {
-  constructor(name, permittedOccupants = [], occupiedBy = "empty", bankSide) {
+  constructor(name, bankSide, permittedOccupants = [], occupiedBy = "empty") {
     this.name = name;
+    this.bankSide = bankSide;
     this.occupiedBy = occupiedBy;
     this.permittedOccupants = permittedOccupants;
-    this.bankSide = bankSide;
+    
   }
 }
 
@@ -11,47 +12,47 @@ class Tile {
 function displayRules() {
   element = document.getElementById("instructions");
 
-  element.style.visibility = "visible"
+  element.style.visibility = "visible";
   element.addEventListener("click", function(){
-    hideRules()
+    hideRules();
 
-  })
+  });
 }
 
 function hideRules(){
   element = document.getElementById("instructions");
 
-  element.style.visibility = "hidden"
+  element.style.visibility = "hidden";
 }
 
 function showMessage() {
   element = document.getElementById("messages");
-  element.style.visibility = "visible"
+  element.style.visibility = "visible";
 }
 function hideMessage() {
   element = document.getElementById("messages");
-  element.style.visibility = "hidden"
+  element.style.visibility = "hidden";
 }
 
 
 function hideStartScreen() {
   element = document.getElementById("start-screen");
-  element.style.visibility = "hidden"
+  element.style.visibility = "hidden";
 }
 
 function showStartScreen() {
   element = document.getElementById("start-screen");
-  element.style.visibility = "visible"
+  element.style.visibility = "visible";
 }
 
 function showWinScreen() {
   element = document.getElementById("win-screen");
-  element.style.visibility = "visible"
+  element.style.visibility = "visible";
 }
 
 function hideWinScreen() {
   element = document.getElementById("win-screen");
-  element.style.visibility = "hidden"
+  element.style.visibility = "hidden";
 }
 
 function resetGame(){
@@ -63,7 +64,7 @@ function resetGame(){
 function freezeTiles(){
   tiles.forEach((tile) => {
     document.getElementById(tile.name).style.pointerEvents = "none";
-  })
+  });
   
 
 
@@ -72,8 +73,8 @@ function freezeTiles(){
 function unfreezeTiles(){
   tiles.forEach((tile) => {
     document.getElementById(tile.name).style.pointerEvents = "auto";
-  })
-};
+  });
+}
 
 function resetTiles() {
 
@@ -82,16 +83,16 @@ function resetTiles() {
       tile.occupiedBy = "wolf";
     }
     else if (tile.name == "top-bank-2") {
-      tile.occupiedBy = "goat"
+      tile.occupiedBy = "goat";
     }
     else if (tile.name == "top-bank-3") {
-      tile.occupiedBy = "cabbages"
+      tile.occupiedBy = "cabbages";
     }
     else if (tile.name == "top-boat") {
-      tile.occupiedBy="boat"
+      tile.occupiedBy="boat";
     }
     else{
-      tile.occupiedBy="empty"
+      tile.occupiedBy="empty";
     } 
     
 
@@ -107,7 +108,7 @@ function resetTiles() {
       }
 }
   
-})
+});
 }
 
 function resetApp(){
@@ -122,7 +123,7 @@ function flashRed(tile) {
   turnRedElement = document.getElementById(tile.name);
 
   
-  turnRedElement.style.borderColor = "#ff0000"
+  turnRedElement.style.borderColor = "#ff0000";
   setTimeout(() => {
     turnRedElement.style.borderColor = "rgb(0, 83, 0)";}, 1000);
 
@@ -130,9 +131,9 @@ function flashRed(tile) {
 
 function growShrink(tile) {
   growShrinkElement = document.getElementById(tile.name);  
-  growShrinkElement.classList.add("grow-shrink")
+  growShrinkElement.classList.add("grow-shrink");
   setTimeout(() => {
-    growShrinkElement.classList.remove("grow-shrink")},2000)
+    growShrinkElement.classList.remove("grow-shrink");},2000);
 
 }
 
@@ -142,7 +143,7 @@ function warnPlayer(tile) {
   if (tile.bankSide == "top") {
     shakingelement = document.getElementById(topBoatCargo.name);
     shakingelement.classList.add("shaking");
-    shakingelement = document.getElementById(topBoat.name)
+    shakingelement = document.getElementById(topBoat.name);
     shakingelement.classList.add("shaking");
   } else {
     shakingelement = document.getElementById(bottomBoatCargo.name);
@@ -168,16 +169,16 @@ function warnPlayer(tile) {
 
 
 
-let topBank1 = new Tile("top-bank-1", ["empty", "wolf"], "wolf", "top")
-let topBank2 = new Tile("top-bank-2", ["empty", "goat"], "goat", "top")
-let topBank3 = new Tile("top-bank-3", ["empty", "cabbages"], "cabbages", "top")
-let topBoatCargo = new Tile("top-boat-cargo", ["empty", "goat", "wolf", "cabbages"], "empty", "top")
-let topBoat = new Tile("top-boat", ["empty", "boat"], "boat", "top")
-let bottomBoat = new Tile("bottom-boat", ["empty", "boat"], "empty", "bottom")
-let bottomBoatCargo = new Tile("bottom-boat-cargo", ["empty", "goat", "wolf", "cabbages"], "empty", "bottom")
-let bottomBank1 = new Tile("bottom-bank-1", ["empty", "wolf"], "empty", "bottom");
-let bottomBank2 = new Tile("bottom-bank-2", ["empty", "goat"], "empty", "bottom");
-let bottomBank3 = new Tile("bottom-bank-3", ["empty", "cabbages"], "empty", "bottom");
+let topBank1 = new Tile("top-bank-1", "top", ["empty", "wolf"], "wolf");
+let topBank2 = new Tile("top-bank-2", "top", ["empty", "goat"], "goat");
+let topBank3 = new Tile("top-bank-3", "top", ["empty", "cabbages"], "cabbages");
+let topBoatCargo = new Tile("top-boat-cargo", "top" ["empty", "goat", "wolf", "cabbages"], "empty");
+let topBoat = new Tile("top-boat", "top", ["empty", "boat"], "boat");
+let bottomBoat = new Tile("bottom-boat",  "bottom", ["empty", "boat"], "empty");
+let bottomBoatCargo = new Tile("bottom-boat-cargo",  "bottom", ["empty", "goat", "wolf", "cabbages"], "empty");
+let bottomBank1 = new Tile("bottom-bank-1", "bottom", ["empty", "wolf"], "empty");
+let bottomBank2 = new Tile("bottom-bank-2", "bottom", ["empty", "goat"], "empty");
+let bottomBank3 = new Tile("bottom-bank-3", "bottom", ["empty", "cabbages"], "empty");
 
 const tiles = [
   topBank1,
@@ -271,7 +272,7 @@ tiles.forEach((tile) => {
 
         // behaviour when illegal move is made
         else {
-          warnPlayer(tile)
+          warnPlayer(tile);
         }
       }
 
@@ -296,7 +297,7 @@ tiles.forEach((tile) => {
           bottomBoatCargo.occupiedBy = "empty";
           bottomBoat.occupiedBy = "empty";
         } else {
-          warnPlayer(tile)
+          warnPlayer(tile);
         }
       }
 
@@ -359,14 +360,14 @@ tiles.forEach((tile) => {
         bottomBank3.occupiedBy == "cabbages"
       ) {
 
-        [bottomBank1, bottomBank2, bottomBank3].forEach(tile => {
+        [bottomBank1, bottomBank2, bottomBank3].forEach((tile) => {
           growShrink(tile);
-      });
+        });
 
        
 
         setTimeout(() => {
-        showWinScreen() = "rgb(0, 83, 0)";}, 2000);
+        showWinScreen() ;}, 2000);
         
       
       }
