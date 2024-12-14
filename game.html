@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A River-Crossing Puzzle</title>
-    
+
 <!--favicon generated at https://favicon.io/favicon-converter/-->
 
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
@@ -29,25 +29,27 @@
       </p>
     </section>
 
-    <section id="instructions" class="display-screen">
-      <h2>Instructions</h2>
-      <p>
-        The goal of the puzzle is to move the wolf, the goat, and the cabbage across the river - the boat can only carry one of them at a time. The wolf will eat the goat if they are left together, and the same is true if the goat and the cabbages are left together.
-        </p>
-        <p>
-        Click the animals and vegetables on the riverbank to move them to the boat, and click the boat to move it across the river. Then move the cargo to the bottom bank 
-      </p>
-      <p>
-        Click the tiles to move cargo onto to the boat, move the boat across the
-        river, and unload the cargo across the riverbank.
-      <p>
-        (Click anywhere to return)
-      </p>
-      </p>
-    </section>
+    
 
 
     <div class="container">
+
+      <section id="instructions" class="display-screen">
+        <h2>Instructions</h2>
+        <p>
+          The goal of the puzzle is to move the wolf, the goat, and the cabbage across the river - the boat can only carry one of them at a time. The wolf will eat the goat if they are left together, and the same is true if the goat and the cabbages are left together.
+          </p>
+          <p>
+          Click the animals and vegetables on the riverbank to move them to the boat, and click the boat to move it across the river. Then move the cargo to the bottom bank 
+        </p>
+        <p>
+          Click the tiles to move cargo onto to the boat, move the boat across the
+          river, and unload the cargo across the riverbank.
+        <p>
+          (Click anywhere to return)
+        </p>
+        </p>
+      </section>
 
       <div id="start-screen" class="display-screen">
         <!--got the button function-calling syntax from w3schools-->
@@ -91,16 +93,16 @@
     </div>
     <div id="messages" ></div>
 
-
+    <div id="win-screen" class="display-screen">
+      <p>Congratulations! You win!</p>
+      <button onclick="resetGame()">Play Again</button>
+      <button onclick="resetApp()">Return to main screen</button>
+      
+      
+      </div>
   </div>
 
-  <div id="win-screen" class="display-screen">
-  <p>Congratulations! You win!</p>
-  <button onclick="resetGame()">Play Again</button>
-  <button onclick="resetApp()">Return to main screen</button>
-  
-  
-  </div>
+
 
 
     <script src="assets/js/script2.js"></script>

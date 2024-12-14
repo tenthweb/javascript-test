@@ -156,11 +156,6 @@ border-radius: 5px;
 }
 
 
-
-
-
-
-
 #messages {
   visibility: hidden;
   position: absolute;
@@ -193,15 +188,17 @@ border-radius: 5px;
   z-index: 1;
 }
 
-@media (mx-width: 600px) {
-  .field {
-    flex-direction: column;
-  }
 
-  .tile {
-    width: 50px;
-    height: 50px;
-  }
+@media (min-width: 600px){}
+
+body{
+  display: flex;
+  justify-content: center;
 }
 
-@media (min-width: 800px){}
+.display-screen {
+  max-width: 600px;
+}
+.container{
+  max-width:600px
+}
